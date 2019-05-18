@@ -1,26 +1,28 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'ibm plex mono', monospace;
+}
+/* END RESET */
+
 .App {
-  text-align: center;
+  font-family: 'ibm plex mono', monospace;
+  line-height: 1.5em;
+  margin: 0 20px;
+}
+
+.Header {
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 56px 0px;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 100%;
   pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -30,4 +32,70 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.section {
+  margin: 50px 0;
+}
+
+.issue-form {
+  margin: auto;
+}
+
+.issue-input {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  background-color: #f0f0f0;
+  font-size: 100%;
+  padding: 0.7em 0.6em;
+  border: 1px solid #f0f0f0;
+}
+
+.issue-input:focus {
+  background: #fff;
+  outline-offset: 2px;
+  outline: 4px solid #bcbcbc;
+}
+
+.issue-input::selection {
+  color: #303133;
+  background: rgba(200, 166, 106, 0.8);
+}
+
+.btn {
+  border: solid 1px;
+  background: #862d3b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.158em;
+  padding: 0.6em 1em;
+  min-width: 130px;
+}
+
+.btn:focus {
+  /* background: #fff; */
+  outline-offset: 2px;
+  outline: 4px solid #862d3b;
+}
+
+.box {
+  border: solid 4px;
+  padding: 0 1em;
+}
+
+.box-title {
+  font-size: 1.728em;
+  background: #fff;
+  display: inline-block;
+  padding: 0.73em 0.97em;
+  transform: translateY(-50%);
+}
+
+.table {
+  list-style: none;
+}
+
+.lower-10 {
+  margin: 10px 0 0 0;
 }
