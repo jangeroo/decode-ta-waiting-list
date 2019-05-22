@@ -9,7 +9,7 @@
 .App {
   font-family: 'ibm plex mono', monospace;
   line-height: 1.5em;
-  margin: 0 20px;
+  margin: 0px 20px;
 }
 
 .Header {
@@ -54,7 +54,6 @@
 
 .issue-input:focus {
   background: #fff;
-  outline-offset: 2px;
   outline: 4px solid #bcbcbc;
 }
 
@@ -75,10 +74,15 @@
 
 .btn:focus {
   /* background: #fff; */
-  outline-offset: 2px;
+  /* outline-offset: 2px; */
   outline: 4px solid #862d3b;
 }
-
+.btn:hover {
+  background: #913141;
+}
+:focus {
+  outline-offset: 2px;
+}
 .box {
   border: solid 4px;
   padding: 0 1em;
