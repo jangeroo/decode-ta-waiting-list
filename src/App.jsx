@@ -12,7 +12,7 @@ class UnconnectedApp extends Component {
 
   componentDidMount() {
     this.fetchStudents();
-    setInterval(this.fetchStudents, 1000);
+    // setInterval(this.fetchStudents, 1000);
   }
 
   fetchStudents = () => {
