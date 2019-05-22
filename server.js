@@ -12,14 +12,15 @@ const waitingList = [
 ];
 
 app.get('/waiting-list', (req, res) => {
-  console.log('*** GETing from /waiting-list');
-  console.log('*** req.body:', JSON.stringify(req.body));
+  console.log('*** GET /waiting-list');
+  console.log('    req.body:', req.body);
+  console.log('WAITING LIST:', waitingList);
   res.json(waitingList);
 });
 
 app.post('/issue', (req, res) => {
-  console.log('*** POSTing to /issue');
-  console.log('*** req.body:', JSON.stringify(req.body));
+  console.log('*** POST /issue');
+  console.log('    req.body:', req.body);
 
   let { name, issue } = req.body;
   waitingList.push({ name, issue });

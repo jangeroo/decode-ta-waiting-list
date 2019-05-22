@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 const Issue = ({ student }) => {
   return (
@@ -8,7 +9,7 @@ const Issue = ({ student }) => {
   );
 };
 
-export default class WaitingList extends Component {
+class UnconnectedWaitingList extends Component {
   render() {
     return (
       <div className='section'>
@@ -24,3 +25,12 @@ export default class WaitingList extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    students: state.students,
+  };
+};
+
+const WaitingList = connect(mapStateToProps)(UnconnectedWaitingList);
+export default WaitingList;

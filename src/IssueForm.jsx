@@ -1,38 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class IssueForm extends Component {
+class UnconnectedIssueForm extends Component {
   constructor() {
     super();
-    this.state = {
-      name: '',
-      issue: '',
-    };
   }
-
-  handleNameChange = event => this.setState({ name: event.target.value });
-
-  handleIssueChange = event => this.setState({ issue: event.target.value });
 
   handleSubmit = event => {
     event.preventDefault();
-    if (!this.state.name) {
+    if (!this.inputName.value) {
       alert("Don't forget your name!");
       return;
     }
-    if (this.state.issue.split(' ').length < 3) {
-      alert('Please describe your issue with at least three words');
+    if (this.inputIssue.value.split(' ').length < 3) {
+      alert('Please describe your issue more precisely.');
       return;
     }
     let data = new FormData();
-    data.append('name', this.state.name);
-    data.append('issue', this.state.issue);
+    data.append('name', this.inputName.value);
+    data.append('issue', this.inputIssue.value);
 
     fetch('/issue', { method: 'POST', body: data })
       .then(res => res.json())
-      .then(res => console.log('res', res));
+      .then(res => {
+        console.log('res', res);
+        if (res.success)
+          this.props.dispatch({
+            type: 'add-student',
+            student: { name: res.name, issue: res.issue },
+          });
+      });
 
-    this.setState({ name: '', issue: '' });
-    this.props.onSubmit();
+    event.target.reset();
   };
 
   render() {
@@ -40,18 +39,16 @@ export default class IssueForm extends Component {
       <div className='section'>
         <form className='issue-form' onSubmit={this.handleSubmit}>
           <input
+            ref={ref => (this.inputName = ref)}
             type='text'
             className='issue-input'
-            value={this.state.name}
             placeholder='Enter your name'
-            onChange={this.handleNameChange}
           />
           <textarea
+            ref={ref => (this.inputIssue = ref)}
             className='issue-input lower-10'
             name='issue'
-            value={this.state.issue}
             placeholder='Enter a brief description of your issue...'
-            onChange={this.handleIssueChange}
           />
           <input type='submit' className='btn ' value='Submit Issue' />
         </form>
@@ -59,3 +56,10 @@ export default class IssueForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { ...state };
+};
+
+const IssueForm = connect(mapStateToProps)(UnconnectedIssueForm);
+export default IssueForm;
