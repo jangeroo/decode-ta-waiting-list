@@ -6,17 +6,13 @@ import IssueForm from './IssueForm.jsx';
 import WaitingList from './WaitingList.jsx';
 
 class UnconnectedApp extends Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     this.fetchStudents();
-    // setInterval(this.fetchStudents, 1000);
+    setInterval(this.fetchStudents, 1000);
   }
 
   fetchStudents = () => {
-    fetch('/waiting-list')
+    fetch('http://localhost:4001/waiting-list')
       .then(res => res.json())
       .then(students => {
         console.log('WAITING:', students);

@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+const cors = require('cors');
+app.use(cors());
+
 const multer = require('multer');
 const upload = multer();
 app.use(upload.none());
@@ -40,14 +43,13 @@ app.post('/issue', (req, res) => {
         .collection('waiting-list')
         .insertOne(req.body)
         .then(result => {
-          console.log('Document inserted:', result.insertedId);
-          res.send;
+          let { insertedId } = result;
+          console.log('Document inserted:', insertedId);
+          let response = { success: true, insertedId, name, issue };
+          res.json(response);
         });
     })
     .catch(error => res.json({ success: false, error }));
-
-  let response = { success: true, name, issue };
-  res.json(response);
 });
 
 const port = 4001;

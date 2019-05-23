@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class UnconnectedIssueForm extends Component {
-  constructor() {
-    super();
-  }
-
   handleSubmit = event => {
     event.preventDefault();
     if (!this.inputName.value) {
@@ -20,7 +16,7 @@ class UnconnectedIssueForm extends Component {
     data.append('name', this.inputName.value);
     data.append('issue', this.inputIssue.value);
 
-    fetch('/issue', { method: 'POST', body: data })
+    fetch('http://localhost:4001/issue', { method: 'POST', body: data })
       .then(res => res.json())
       .then(res => {
         console.log('res', res);
